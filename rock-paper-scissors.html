@@ -2,104 +2,48 @@
 <html>
   <head>
     <title>Rock Paper Scissors</title>
-    <style>
-     
-    </style>
+    <link rel="stylesheet" href="styles/rock-paper-scissors.css">
   </head>
   
   <body>
-    <p>Rock Paper Scissors</p>
+    <p class="title">Rock Paper Scissors</p>
 
+    <!-------------ROCK-BUTTON------------------>
     <button onclick="
       playGame('Rock');
-    ">Rock</button>  
+    " class="move-button">
+      <img src="images/rock-emoji.png" class="move-icon">
+    </button>  
 
+    <!-------------PAPER-BUTTON------------------>
     <button onclick="
       playGame('Paper');
-    ">Paper</button>  
+    " class="move-button">
+      <img src="images/paper-emoji.png" class="move-icon">
+    </button>  
 
+    <!-------------SCISSORS-BUTTON------------------>
     <button onclick="
       playGame('Scissors');
-    ">Scissors</button>  
+    " class="move-button">
+      <img src="images/scissors-emoji.png" class="move-icon">
+    </button>  
 
-    <p class="js-result"></p>
+    <!-------------GAME-RESULTS------------------>
+    <p class="js-result result"></p>
     <p class="js-moves"></p>
-    <p class="js-score"></p>
+    <p class="js-score score"></p>
     
+    <!-------------RESET-BUTTON------------------>
     <button onclick="
       score.wins = 0;
       score.losses = 0;
       score.ties = 0;
       localStorage.removeItem('score');
       updateScoreElement();
-    ">Reset Score</button>
+    " class="reset-score-button">Reset Score</button>
 
-    <script>
-      const score = JSON.parse(localStorage.getItem('score')) || {
-        wins: 0,
-        losses: 0,
-        ties: 0,
-      };
-
-      updateScoreElement();
-
-      function pickComputerMove() {
-        const randomNum = Math.random();
-
-        return (
-          randomNum >= 0 && randomNum < 1/3)? 'Rock':
-          (randomNum >= 1/3 && randomNum < 2/3)? 'Paper':
-          'Scissors';
-      }
-
-      function playGame(playerMove) {
-        const computerMove = pickComputerMove();
-        let result = '';
-
-        if (playerMove === 'Rock') {
-          result = (computerMove === 'Scissors')? 'You win.':
-          (computerMove === 'Paper')? 'You lose.': 'Tie.';
-
-        } else if (playerMove === 'Paper') {
-          result = (computerMove === 'Rock')? 'You win.':
-          (computerMove === 'Scissors')? 'You lose.': 'Tie.';
-
-        } else if (playerMove === 'Scissors') {
-          result = (computerMove === 'Paper')? 'You win.':
-          (computerMove === 'Rock')? 'You lose.': 'Tie.';
-        };
-
-        switch (result) {
-          case 'You win.':
-            score.wins += 1;
-            break;
-
-          case 'You lose.':
-            score.losses += 1;
-            break;
-
-          default:
-            score.ties += 1;
-            break;
-        };
-        
-        localStorage.setItem('score', JSON.stringify(score));
-
-        updateScoreElement();
-
-        document.querySelector('.js-result')
-          .innerHTML = result;
-
-        document.querySelector('.js-moves')
-          .innerHTML = `You ${playerMove} - ${computerMove} Computer`;
-      } 
-
-      function updateScoreElement() {
-        return document.querySelector('.js-score')
-          .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
-      }
-    </script>
-
+    <script src="scripts/rock-paper-scissors.js"></script>
   </body>
 </html>
 
