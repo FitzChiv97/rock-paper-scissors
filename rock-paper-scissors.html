@@ -6,42 +6,34 @@
   </head>
   
   <body>
-    <p class="title">Rock Paper Scissors</p>
+    <div class="container">
+      <div class="title">
+        <p>Rock Paper Scissors</p>
+      </div>
 
-    <!-------------ROCK-BUTTON------------------>
-    <button onclick="
-      playGame('Rock');
-    " class="move-button">
-      <img src="images/rock-emoji.png" class="move-icon">
-    </button>  
+      <div class="move">
+        <button class="move__btn js-rock-btn">
+          <img src="images/rock-emoji.png" class="move-icon">
+        </button>  
+  
+        <button class="move__btn js-paper-btn">
+          <img src="images/paper-emoji.png" class="move-icon">
+        </button>  
+  
+        <button class="move__btn js-scissors-btn">
+          <img src="images/scissors-emoji.png" class="move-icon">
+        </button>  
+      </div>
 
-    <!-------------PAPER-BUTTON------------------>
-    <button onclick="
-      playGame('Paper');
-    " class="move-button">
-      <img src="images/paper-emoji.png" class="move-icon">
-    </button>  
-
-    <!-------------SCISSORS-BUTTON------------------>
-    <button onclick="
-      playGame('Scissors');
-    " class="move-button">
-      <img src="images/scissors-emoji.png" class="move-icon">
-    </button>  
-
-    <!-------------GAME-RESULTS------------------>
-    <p class="js-result result"></p>
-    <p class="js-moves"></p>
-    <p class="js-score score"></p>
-    
-    <!-------------RESET-BUTTON------------------>
-    <button onclick="
-      score.wins = 0;
-      score.losses = 0;
-      score.ties = 0;
-      localStorage.removeItem('score');
-      updateScoreElement();
-    " class="reset-score-button">Reset Score</button>
+      <div class="result">
+        <div class="js-result"></div>
+        <div class="js-moves"></div>
+        <div class="js-score"></div>
+        <div class="btn-wrapper">
+          <button class="js-reset-btn">Reset Score</button>
+        </div>
+      </div>
+    </div>
 
     <script src="scripts/rock-paper-scissors.js"></script>
   </body>
